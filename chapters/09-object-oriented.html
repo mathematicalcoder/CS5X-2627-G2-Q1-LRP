@@ -51,17 +51,16 @@
         <label class="python-label">PYTHON CODE</label>
         <textarea id="code-1" rows="11" class="python-code">
 class Student: 
-          def __init__(self, name: str, grades: list[float]):
-          self.name = name
-          self.grades = grades
-          def average(self) -> float:
-          if not self.grades:
-              return 0.0
-          return sum(self.grades) / len(self.grades)
-          
-        student1 = Student("Max", [85, 92, 78])
-        print(student1.average())
-        </textarea><br /> 
+    def __init__(self, name: str, grades: list[float]):
+        self.name = name
+        self.grades = grades
+    def average(self) -> float:
+        if not self.grades:
+            return 0.0
+        return sum(self.grades) / len(self.grades)
+
+student1 = Student("Max", [85, 92, 78])
+print(student1.average())</textarea><br /> 
         <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
         </form>
         </p>
@@ -72,18 +71,17 @@ class Student:
         <form> 
         <label class="python-label">PYTHON CODE</label>
         <textarea id="code-2" rows="11" class="python-code">
-        class Student: 
-          def __init__(self, name):
-            self.name = name
-          
-        student1 = Student("Max")
-        student2 = Student("Mikhail")
-        print(student1.name)
-        print(student2.name)
-        student1.name = Student("Edge")
-        print(student1.name)
-        print(student2.name)
-        </textarea><br /> 
+class Student: 
+    def __init__(self, name):
+        self.name = name
+
+student1 = Student("Max")
+student2 = Student("Mikhail")
+print(student1.name)
+print(student2.name)
+student1.name = Student("Edge")
+print(student1.name)
+print(student2.name)</textarea><br /> 
         <button type="button" onclick="runit('code-2')" class="btn btn-success">Run</button> 
         </form>
         </p>
@@ -93,16 +91,15 @@ class Student:
         <form> 
         <label class="python-label">PYTHON CODE</label>
         <textarea id="code-3" rows="9" class="python-code">
-        class Student: 
-          def __init__(self, name):
-            self.name = name
-          
-        student1 = Student("Max")
-        student2 = Student("Mikhail")
-        Student.name = "Edge"
-        print(student1.name)
-        print(student2.name)
-        </textarea><br /> 
+class Student: 
+    def __init__(self, name):
+        self.name = name
+    
+student1 = Student("Max")
+student2 = Student("Mikhail")
+Student.name = "Edge"
+print(student1.name)
+print(student2.name)</textarea><br /> 
         <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
         </form>
         </p>
