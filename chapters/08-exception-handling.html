@@ -10,12 +10,193 @@
   <link href="../style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div id="navbar"></div>
+    <div class="nav-container">
+        <nav>
+            <ul>
+                <li><a href="../index.html"><b>Edging Pythons</b></a></li>
+                <li><a href="chapters/01-programming-vs-coding.html">Introduction: Programming vs. Coding</a></li>
+                <li><a href="chapters/02-software-development.html">Software Development Life Cycle</a></li>
+                <li><a href="chapters/03-intro-to-python.html">Introduction to Python</a></li>
+                <li><a href="chapters/04-data-types-expressions.html">Data Types and Expressions</a></li>
+                <li><a href="chapters/05-control-structures.html">Control Structures</a></li>
+                <li><a href="chapters/06-functions.html">Functions</a></li>
+                <li><a href="chapters/07-collections-slicing.html">Collections</a></li>
+                <li><a href="chapters/08-exception-handling.html">Exception Handling</a></li>
+                <li><a href="chapters/09-object-oriented.html">Object-Oriented Programming</a></li>
+                <li><a href="chapters/10-recursion.html">Recursion</a></li>
+                <li><a href="chapters/11-file-io.html">File Input/Output</a></li>
+            </ul>
+        </nav>
+    </div>
     <div id="content">
         <h1>Exception Handling</h1>
-        <p class="lead">Written by [name]</p>
+        <p class="lead">Written by Kaiser Chan</p>
+
+        <div class="output-div noprint">
+        <details id="output-hide">
+            <summary>Python Output</summary>
+            <label class="python-label">OUTPUT</label>
+            <pre id="output" class="code-output"></pre>
+        </details>
+        </div>
 
         <!--content here-->
+        <h2>Introduction: Breaking the program</h2>
+
+        <p>Recall that any algorithm has an input which has restrictions, meaning the input must follow set conditions. This means that <b>it is important to consider what happens to the program if the user provides an invalid input</b>. Consider the following example:</p>
+
+        <div class="ex">
+        <div class="ex-header">Example 1</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>The program below takes two numbers $a$ and $b$, presumed to be positive integers, as input and computes their greatest common divisor ($\gcd(a,b)$) using Euclid's algorithm.</p>
+
+            <!--START CODE--------------------------------------------------------->
+            <p>
+            <form> 
+            <label class="python-label">PYTHON CODE</label>
+<textarea id="code-1" class="python-code">
+a = int(input())
+b = int(input())
+while a != b:
+    if a > b:
+        a = a-b
+    else:
+        b = b-a
+print(a)</textarea><br /> 
+            <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
+            </form>
+            </p>
+            <!--END CODE----------------------------------------------------------->
+        </div>
+        </div>
+
+        <p>Notice how weird behavior happens when we pass things that are not positive integers as input:
+        <ul>
+            <li>If we pass things that are <i>not</i> integers, then we get a <code>ValueError</code> with a message that is cryptic to non-programmers.</li>
+            <li>If we pass things that are <i>nonpositive</i> integers, then the program runs forever (since it endlessly subtracts the two numbers).</li>
+        </ul>
+        As much as possible, we want the user to avoid having these encounters when invalid input is passed, so we use <b>exception handling</b>, the act of adding extra pieces of code to catch and respond to possible exceptions (input that does not follow restrictions).</p>
+
+        <h2>Types of errors</h2>
+
+        <p>In Python, we have two types of errors:
+        <ul>
+            <li><b>syntax errors (<code>SyntaxError</code>)</b>, meaning there is something wrong in the format of the code (e.g., indentation, missing colons, etc.), and</li>
+            <li><b>semantic errors</b>, which depend on the context of the code and how it is being executed (for example, division by zero gives a <code>ZeroDivisionError</code>).</li>
+        </ul>
+        </p>
+
+        <div class="ex">
+        <div class="ex-header">Example 2</div>
+        <div class="ex-content" style="text-align: left;">
+            <p>Consider this poorly written version of the previous example. Identify each error in the code and its classification.</p>
+
+            <!--START CODE--------------------------------------------------------->
+            <p>
+            <form> 
+            <label class="python-label">PYTHON CODE</label>
+<textarea id="code-2" class="python-code">
+a = int(input())
+b = int(input())
+while a !== b:
+    if a > b:
+        a = a--b
+    else:
+        b = b-a
+print(a)</textarea><br /> 
+            <button type="button" onclick="runit('code-2')" class="btn btn-success">Run</button> 
+            </form>
+            </p>
+            <!--END CODE----------------------------------------------------------->
+        </div>
+        </div>
+
+        <p>Firstly, we get a syntax error from the third line; the inequality relation must be written as <code>!=</code> and not <code>!==</code>. We also notice that in the fifth line, <code>a--b</code> should be <code>a-b</code>, but this is in fact a <i>semantic</i> error, since <code>a--b</code> is interpreted as <code>a-(-b)</code>, or <code>a+b</code>.</p>
+
+        <h2>Catching errors</h2>
+
+        <p>If we have a code block that can possibly crash, we use the <code>try</code> and <code>except</code> blocks, which contain the code we are trying to implement and the code that will be executed if an error occurs, respectively. The <code>except</code> keyword is followed by an error name, or the word <code>Exception</code> for a general error. We can use this to catch non-integers in our first example:</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-3" class="python-code">
+try:
+    a = int(input())
+    b = int(input())
+    while a != b:
+        if a > b:
+            a = a-b
+        else:
+            b = b-a
+    print(a)
+except ValueError:
+    print("Invalid input!")
+except Exception:
+    print("An unknown error occurred.")</textarea><br /> 
+        <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <p>Note that this doesn't catch nonpositive integers. What we can do is that we can add a condition before the while loop that checks for nonpositive integers, and if any of $a$ or $b$ is nonpositive, it throws a <code>ValueError</code>. This is done using the <code>raise</code> keyword as shown below.</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-4" class="python-code">
+try:
+    a = int(input())
+    b = int(input())
+    if a <= 0 or b <= 0:
+        raise ValueError("Numbers must be POSITIVE integers.")
+    while a != b:
+        if a > b:
+            a = a-b
+        else:
+            b = b-a
+    print(a)
+except ValueError:
+    print("Invalid input!")
+except Exception:
+    print("An unknown error occurred.")</textarea><br /> 
+        <button type="button" onclick="runit('code-4')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
+
+        <p>We can also use the <code>else</code> and <code>finally</code> blocks to contain code that should be done when there is no error, and code that should be done whether or not an error occurred (e.g., cleaning things up). Notice how in the code snippet below, we moved <code>print(a)</code> under the <code>else</code> block for readability purposes.</p>
+
+        <!--START CODE--------------------------------------------------------->
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+<textarea id="code-5" class="python-code">
+try:
+    a = int(input())
+    b = int(input())
+    if a <= 0 or b <= 0:
+        raise ValueError("Numbers must be POSITIVE integers.")
+    while a != b:
+        if a > b:
+            a = a-b
+        else:
+            b = b-a
+except ValueError:
+    print("Invalid input!")
+except Exception:
+    print("An unknown error occurred.")
+else:
+    print(a)
+finally:
+    # "Fin." is shown in the output whether an error occurred or not
+    print("Fin.")</textarea><br /> 
+        <button type="button" onclick="runit('code-5')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <!--END CODE----------------------------------------------------------->
     </div>
 </body>
     <footer id="footer"></footer>

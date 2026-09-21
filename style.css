@@ -11,6 +11,7 @@ body {
     margin: auto;
     /*padding-bottom: 100px;*/
     /*text-align: justify;*/
+    color: #9CFFD8;
 }
 
 div#content {
@@ -38,7 +39,8 @@ nav {
 }
 .ex-header {
     padding: 5px;
-    color: 05161A;
+    color: #05161A;
+    background-color: #00CCFF;
     font-weight: bold;
 }
 .ex-content {
@@ -208,7 +210,8 @@ textarea {
 }
 
 textarea {
-    resize: vertical;
+    resize: none;
+    field-sizing: content;
 }
 
 pre {
@@ -222,8 +225,8 @@ textarea.python-code, pre.code-output {
 label.python-label {
     margin-bottom: 0%;
     padding: 2px;
-    background-color: #7ea7fe;
-    color: white;
+    background-color: #1CF3FF;
+    color: #05161A;
     font-weight: bold;
     font-size: 10px;
 }
@@ -264,9 +267,9 @@ div.output-div {
     right: 5px;
     width:50%;
     padding: 10px;
-    background-color: #fff;
+    background-color: #05161A;
     z-index: 10;
-    /*border: 2px solid slategray;*/
+    border: 2px solid #00CCFF;
     border-radius: 5px;
     overflow: auto;
 }
@@ -274,4 +277,64 @@ p {
     font-size: 16px;
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+.nav-container{
+    z-index: 1000;
+    background-color: #0A464D;
+}
+nav {
+    transform: translateX(-190px);
+    transition: transform 0.3s ease-in-out;
+
+}
+.nav-container:hover nav {
+    transform: translateX(0)
+}
+
+
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0A464D;
+}
+nav ul li {
+    list-style: none;
+}
+nav ul li a {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #1CF3FF;
+    position: relative;
+    background: #072E33;
+    padding: 10px 10px 10px 38px;
+    z-index: 3;
+}
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 0%;
+    height: 100%;
+    border-radius: 40px 0px 0px 40px;
+    z-index: 1;
+}
+nav ul li a:hover {
+    color: #15A8B0;
+}
+nav ul li a:hover:before {
+    width: 95%;
+}
+div#content {
+    margin: 5%;
 }
