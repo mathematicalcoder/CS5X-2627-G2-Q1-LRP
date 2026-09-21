@@ -30,8 +30,89 @@
     </div>
     <div id="content">
         <h1>File Input/Output</h1>
-        <p class="lead">Written by [name]</p>
+        <p class="lead">Written by Lawrence Cereñado</p>
+        <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
+            <h4 style = "color:rgb(252, 252, 252)"> 📁 File I/O </h4>
+            Let's say that you have an important text file that you want your
+            Python program to handle. You would be in luck, as Python supports
+            file input, handling, and output! 
 
+            Python can handle the following file operations:
+            <ul>
+                <li>Read a file</li>
+                <li>Write to the file</li>
+                <li>Close the file</li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
+            <h4 style = "color:rgb(252, 252, 252)"> Reading the File </h4>
+            The first method in dealing with a file in Python is to read the file. 
+            The syntax for this is: 
+            <code>file.read(size)</code>
+            Where <code>file</code> is the file to be read, and <code>size</code> is 
+            how many bytes your program would read. 
+
+            For example:<br>
+            <code>places = open("data/favPlaces.txt")</code><br>
+            <code>print(places.read())</code>
+
+            This returns our favorite places:<br>
+            Boracay <br>
+            Laguna <br> 
+            Pampanga <br>
+            Baguio <br>
+        </div>  
+
+        <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
+            <h4 style = "color:rgb(252, 252, 252)"> Reading Methods </h4>
+            Aside from the <code>.read()</code> method, the <code>.readline()</code>
+            and <code>.readlines()</code> methods are also other ways to read the file.
+
+            The former reads the <b>first line</b> of the file until it reaches the end of the file.
+            The latter returns a <b>list of all the lines</b> of the file as strings.
+
+            For example, for our file earlier, doing the latter method would return this:
+            <code>['Boracay\n', 'Laguna\n', 'Pampanga\n', 'Baguio\n'</code>
+        </div>  
+
+        <br>
+        <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
+            <h4 style = "color:rgb(252, 252, 252)"> Creating a File </h4>
+            You can create a new file (if it doesn't exist), using the .open() method, with 
+            the file access method set to 'x'. It would have nothing inside of it initially though.
+        </div>  
+
+        <br>
+        <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
+            <h4 style = "color:rgb(252, 252, 252)"> Modifying a File </h4>
+            As we discussed earlier, there are two types of file modification methods. 
+            We can choose to <i>append</i> to the file, or <i>write</i> (overwrite) the file with 
+            new content. This is done using the <code>.write()</code> method. <br>
+
+            <b>If we choose to append:</b><br>
+            The syntax is : <code>file.write(str)</code>, where <code>str</code> contains the 
+            content we want to append. 
+
+            For example, if we want to add Bulacan to our list: <br>
+            <code>open("data/favPlaces.txt", "a")</code><br>
+            <code>file.write("\nBatanes")</code><br>
+
+            We add an <code>'\n'</code> symbol to separate it from the other lines already there. <br><br>
+            <b>If we choose to write:</b><br>
+            We also use the same method, but with a different access mode.
+            <code>open("data/favPlaces.txt", "w")</code><br>
+            <code>file.write("\nBatanes")</code><br>
+            Now our favorite place is just Batanes.
+        </div>  
+
+                <h3> References </h3>
+        <p>
+            Fagbuyiro, D. (2022, August 26). File Handling in Python – how to create, read, and write to a file. freeCodeCamp.org. https://www.freecodecamp.org/news/file-handling-in-python/<br>
+            Navone, E. C. (2020, May 7). Python write to file – open, read, append, and other file handling functions explained. freeCodeCamp.org. https://www.freecodecamp.org/news/python-write-to-file-open-read-append-and-other-file-handling-functions-explained/
+            <br>Python File Open. (n.d.). W3Schools. https://www.w3schools.com/python/python_file_handling.asp
+        </p>
         <!--content here-->
     </div>
 </body>
