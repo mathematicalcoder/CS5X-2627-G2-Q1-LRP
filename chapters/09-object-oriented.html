@@ -29,11 +29,100 @@
         </nav>
     </div>
     <div id="content">
-        <h1>Object-Oriented Programming (OOP)</h1>
+        <h1>Object-Oriented Programming </h1>
         <p class="lead">Written by Maxene Tano</p>
-        <h2>Introduction: Four Main Pillars of OOP</h2>
-        Procedural programming split a program into various functions that operate on data stored in variables. While beginner-friendly, as programs scale, it gets increasingly inefficient; changes may require editing multiple lines of code 
-
+        <h2>Introduction: Classes and Objects</h2>
+        <p>Procedural programming split a program into various functions that operate on data stored in variables. While beginner-friendly, as programs scale, it gets increasingly inefficient; changes may require editing multiple lines of code and data may be accessed globally. Object-Oriented Programming (OOP) introduces an efficient way to structure numerous functions and variables, and focuses on two concepts: classes and objects.</p>
+        <p>Class - defines a template or category for the creation of objects (Ex. Subjects)</p>
+        <p>Object - instance of a class that has unique attributes (Ex. Biology, Chemistry, Physics)</p>
+        <h3>Defining Classes and Objects</h3>
+        <p>__init()__ : built-in initializer method, which automatically executes during the creation of a new instance. </p>
+        <p>self : represents the instance of the class</p>
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+        <textarea id="code-1" rows="11" class="python-code">
+        class Student: 
+          def __init__(self, name: str, grades: list[float]):
+            self.name = name
+            self.grades = grades
+          def average(self) -> float:
+            if not self.grades:
+              return 0.0
+            return sum(self.grades) / len(self.grades)
+          
+        student1 = Student("Max", [85, 92, 78])
+        print(student1.average())
+        </textarea><br /> 
+        <button type="button" onclick="runit('code-1')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <p>In this example, a Student class was defined with two properties, name and grades, and a function to compute for a student's average grades.</p>
+        <p>However, the ability to define classes and objects is not enough. The values within variables may change, thus it's imperative to know how to modify certain properties.</p>
+        <h3>Modifing Properties</h3>
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+        <textarea id="code-2" rows="11" class="python-code">
+        class Student: 
+          def __init__(self, name):
+            self.name = name
+          
+        student1 = Student("Max")
+        student2 = Student("Mikhail")
+        print(student1.name)
+        print(student2.name)
+        student1.name = Student("Edge")
+        print(student1.name)
+        print(student2.name)
+        </textarea><br /> 
+        <button type="button" onclick="runit('code-2')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <p>Notice how modifying one object's property does not affect another object's property.</p>
+      
+        <p>
+        <form> 
+        <label class="python-label">PYTHON CODE</label>
+        <textarea id="code-3" rows="9" class="python-code">
+        class Student: 
+          def __init__(self, name):
+            self.name = name
+          
+        student1 = Student("Max")
+        student2 = Student("Mikhail")
+        Student.name = "Edge"
+        print(student1.name)
+        print(student2.name)
+        </textarea><br /> 
+        <button type="button" onclick="runit('code-3')" class="btn btn-success">Run</button> 
+        </form>
+        </p>
+        <p>Notice how modifying the class's property affects all objects.</p>
+      
+        <h2>Four Pillars of OOP</h2>
+        <p>OOP has four pillars that distinguishes it from procedural programming: Encapsulation, Abstraction, Inheritance, and Polymorphism.</p>
+        <h3>Encapsulation</h3>
+        <p>This involves grouping methods in a class while restricting access to some data by using private attributes.</p>
+        <h3>Abstraction</h3>
+        <p>This focuses on hiding complex logic behind a clear interface. It is abstracting more complicated details to focus on the necessary functions.</p>
+        <h3>Inheritance</h3>
+        <p>This allows a class to share properties and methods from another class. The subclass inherits certain aspects from a parent class.</p>
+        <h3>Polymorphism</h3>
+        <p>This enables different classes to have different behaviors with the same method name. It allows a single interface to handle different object types.</p>
+       
+        <h2>Class Hierarchy Diagram</h2>
+        <h3>Class Box</h3>
+        <p>Top Box : Class name (Ex. Student)</p>
+        <p>Middle Box : Attributes (Ex. + name: string)</p>
+        <p>Bottom Box : Methods (Ex. + average(): number)</p>
+        <h3>Lines</h3>
+        <p>Solid Line with Hollow Arrowhead : represents inheritance, the subclass points towards the parent class</p>
+        <p>Dashed Line with Hollow Arrowhead : indicates that a class implements an abstract class or interface</p>
+        <h3>Visibility Modifiers</h3>
+        <p>+ : public</p>
+        <p>- : private (accessible only within the class)</p>
+        <p># : accessible within the class and its subclasses</p>
     </div>
 </body>
     <footer id="footer"></footer>
