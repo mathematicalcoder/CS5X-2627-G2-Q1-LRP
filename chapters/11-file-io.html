@@ -55,14 +55,16 @@
             how many bytes your program would read. 
 
             For example:<br>
-            <code>places = open("data/favPlaces.txt")</code><br>
-            <code>print(places.read())</code>
+            <pre>
+places = open("data/favPlaces.txt")
+print(places.read())</pre>
 
             This returns our favorite places:<br>
-            Boracay <br>
-            Laguna <br> 
-            Pampanga <br>
-            Baguio <br>
+            <pre>
+Boracay
+Laguna
+Pampanga
+Baguio</pre>
         </div>  
 
         <div style = "background-color:rgb(14, 66, 48); padding:1%"> 
@@ -89,29 +91,33 @@
             <h4 style = "color:rgb(252, 252, 252)"> Modifying a File </h4>
             As we discussed earlier, there are two types of file modification methods. 
             We can choose to <i>append</i> to the file, or <i>write</i> (overwrite) the file with 
-            new content. This is done using the <code>.write()</code> method. <br>
+            new content. This is done using the <code>.write()</code> method. <br><br>
 
             <b>If we choose to append:</b><br>
-            The syntax is : <code>file.write(str)</code>, where <code>str</code> contains the 
+            The syntax is: <code>file.write(str)</code>, where <code>str</code> contains the 
             content we want to append. 
 
             For example, if we want to add Bulacan to our list: <br>
-            <code>open("data/favPlaces.txt", "a")</code><br>
-            <code>file.write("\nBatanes")</code><br>
+            <pre>open("data/favPlaces.txt", "a")
+file.write("\nBatanes")</pre><br>
 
             We add an <code>'\n'</code> symbol to separate it from the other lines already there. <br><br>
             <b>If we choose to write:</b><br>
             We also use the same method, but with a different access mode.
-            <code>open("data/favPlaces.txt", "w")</code><br>
-            <code>file.write("\nBatanes")</code><br>
+<pre>
+open("data/favPlaces.txt", "w")
+file.write("\nBatanes")
+</pre>
             Now our favorite place is just Batanes.
         </div>  
 
-                <h3> References </h3>
+                <h2> References </h2>
         <p>
-            Fagbuyiro, D. (2022, August 26). File Handling in Python – how to create, read, and write to a file. freeCodeCamp.org. https://www.freecodecamp.org/news/file-handling-in-python/<br>
-            Navone, E. C. (2020, May 7). Python write to file – open, read, append, and other file handling functions explained. freeCodeCamp.org. https://www.freecodecamp.org/news/python-write-to-file-open-read-append-and-other-file-handling-functions-explained/
-            <br>Python File Open. (n.d.). W3Schools. https://www.w3schools.com/python/python_file_handling.asp
+            Fagbuyiro, D. (2022, August 26). <i>File Handling in Python – how to create, read, and write to a file</i>. freeCodeCamp.org. <a href="https://www.freecodecamp.org/news/file-handling-in-python/">https://www.freecodecamp.org/news/file-handling-in-python/</a>
+        </p><p>
+            Navone, E. C. (2020, May 7). <i>Python write to file – open, read, append, and other file handling functions explained</i>. freeCodeCamp.org. <a href="https://www.freecodecamp.org/news/python-write-to-file-open-read-append-and-other-file-handling-functions-explained/">https://www.freecodecamp.org/news/python-write-to-file-open-read-append-and-other-file-handling-functions-explained/</a>
+        </p><p>
+            <i>Python File Open</i>. (n.d.). W3Schools. <a href="https://www.w3schools.com/python/python_file_handling.asp">https://www.w3schools.com/python/python_file_handling.asp</a>
         </p>
         <!--content here-->
     </div>
